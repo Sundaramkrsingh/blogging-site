@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import { PrismaClient } from '@prisma/client/edge'
 import { withAccelerate } from '@prisma/extension-accelerate'
-import { sign, decode, verify } from 'hono/jwt'
+import { sign } from 'hono/jwt'
 import { signupInput, signinInput } from '@sundaram_11/medium-common'
 
 export const userRouter = new Hono<{
@@ -76,7 +76,7 @@ userRouter.post('/signin', async (c) => {
     const prisma = c.get('prisma')
     const user = await prisma.user.findFirst({
       where: {
-        email: body.username,
+        email: body.email,
         password: body.password
       }
     })
