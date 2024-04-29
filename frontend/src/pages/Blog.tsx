@@ -10,7 +10,7 @@ export function Blog() {
         id: id || ""
     })
 
-    if(loading) 
+    if(loading || !blog) 
     {
         return <div>
             <AppBar />
